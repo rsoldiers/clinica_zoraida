@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
 use Laravel\Socialite\Facades\Socialite;
 use App\Http\Controllers\RegisterController;
+use App\Models\UserGoogle;
+use Illuminate\Support\Facades\Auth;
 
 
 /*
@@ -20,73 +22,48 @@ use App\Http\Controllers\RegisterController;
 |
 */
 
+// Ruta para mostrar el formulario de registro
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
+
+// Ruta para procesar el formulario de registro
 Route::post('/register', [RegisterController::class, 'store']);
 
+// Ruta para la página de inicio de sesión
 Route::get('/', function () {
     return view('auth.login');
-});
+})->name('login');
 
-Route::get('/principal', [PrincipalController::class, 'index']);
+// Ruta para la página principal
+Route::get('/principal', [PrincipalController::class, 'index'])->name('principal');
 
 
-// Route::get('/login', function () {
-//     return view('auth.login');
-// });
+ Route::get('/login', function () {
+     return view('auth.login');
+ });
 
-// Route::post('/login-google', function () {
-//     return Socialite::driver('google')->redirect();
-// })->name('login-google');
+ Route::post('/login-google', function () {
+     return Socialite::driver('google')->redirect();
+ })->name('login-google');
 
-// Route::get('/google-callback', function () {
-//     if (Session::has('user_data')) {
-//         // Si el usuario no está autenticado, redirígelo a la página de inicio de sesión
-//         return view('auth.login');
-//     }
+ Route::get('/google-callback', function () {
+    $user = Socialite::driver('google')->user();
 
-//     $user = Socialite::driver('google')->user();
-    
-//     // Almacenar los datos del usuario en la sesión
-//     Session::put('user_data', [
-//         'name' => $user->name,
-//         'avatar' => $user->avatar,
-//         'email' => $user->email,
-//         'user_id' => $user->id,
-//     ]);
+    // Verifica si el usuario ya existe en la base de datos
+    $existingUser = UserGoogle::where('google_id', $user->id)->first();
 
-//     $userData = [
-//         'name' => $user->name,
-//         'nickname' => $user->nickname,
-//         'password' => $user->token,
-//         'avatar' => $user->avatar,
-//         'email' => $user->email,
-//         'external_id' => "CORRECTO",
-//         'external_auth' => 'Google', //autenticación externa fue a través de Google
-//     ];
+    if ($existingUser) {
+        // Usuario ya registrado, puedes autenticarlo o actualizar los datos si es necesario
+        // Aquí podrías usar Auth::login() si deseas iniciar sesión automáticamente
+    } else {
+        // Crea un nuevo registro en la tabla `users_google`
+        UserGoogle::create([
+            'name' => $user->name,
+            'email' => $user->email,
+            'avatar' => $user->avatar,
+            'google_id' => $user->id,
+        ]);
+    }
 
-//     // URL del endpoint de tu API en Laravel donde quieres insertar los datos
-//     $url = 'https://saludgeoapi.up.railway.app/users/';
-
-//     try {
-//         // Realizar la solicitud POST
-//         $response = Http::withHeaders([
-//             'accept' => 'application/json',
-//             'Content-Type' => 'application/json',
-//         ])->post($user, $userData);
-
-//         if ($response->successful()) {
-//             // Redirigir al usuario a la página de mapas después de la autenticación exitosa
-//             return redirect('/principal');
-//         } else {
-//             $errorMessage = $response->body(); // Obtener el mensaje de error
-//             Log::error('Error al conectar con la API: ' . $errorMessage);
-//             return redirect('/principal');
-//         }
-//     } catch (Exception $e) {
-//         // Ocurrió un error al hacer la solicitud
-//         $errorMessage = $e->getMessage(); // Obtener el mensaje de error
-//         Log::error('Error al conectar con la API: ' . $errorMessage);
-//         return redirect()->back()->with('error', 'Hubo un problema al conectar con la API. Por favor, inténtelo de nuevo más tarde.');
-//     }
-// }
-// );
+    // Puedes redirigir al usuario a la página principal o a donde necesites
+    return redirect()->route('principal');
+})->name('google-callback');

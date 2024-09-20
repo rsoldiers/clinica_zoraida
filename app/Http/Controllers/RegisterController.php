@@ -6,38 +6,35 @@ use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
     public function index() 
     {
-        return redirect('principal');
+        return view('auth.register'); // Asegúrate de que este archivo de vista exista
     }
 
     public function store(Request $request)
     {
-        // dd($request); 
-        //  dd($request->get('email'));
-
-        // Modificar el Request
-        // $request->request->add(['name' => Str::slug($request->name)]);
-
-        // Validacion
+        // Validación
         $this->validate($request, [
             'name' => 'required|max:30',
             'email' => 'required|unique:users|email|max:60',
             'password' => 'required|confirmed|min:6'
         ]);
 
-
-        User::create([
+        // Crear el usuario
+        $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => Hash::make( $request->password )
+            'password' => Hash::make($request->password)
         ]);
 
-        // Redireccionar
-        return redirect()->route('principal', auth()->user() );
-    }
+        // Autenticación del usuario
+        Auth::login($user); // Cambié a Auth::login para autenticar al usuario creado
 
+        // Redireccionar
+        return redirect()->route('principal');
+    }
 }

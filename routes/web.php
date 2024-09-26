@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
 use Laravel\Socialite\Facades\Socialite;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\AuthController;
 use App\Models\UserGoogle;
 use Illuminate\Support\Facades\Auth;
 
@@ -28,10 +29,11 @@ Route::get('/register', [RegisterController::class, 'index'])->name('register');
 // Ruta para procesar el formulario de registro
 Route::post('/register', [RegisterController::class, 'store']);
 
-// Ruta para la página de inicio de sesión
-Route::get('/', function () {
-    return view('auth.login');
-})->name('login');
+
+
+Route::get('/', [AuthController::class, 'index'])->name('login');
+Route::post('/', [AuthController::class, 'login']);
+
 
 // Ruta para la página principal
 Route::get('/principal', [PrincipalController::class, 'index'])->name('principal');

@@ -14,19 +14,22 @@
         <div class="forms-container">
             <div class="signin-signup">
                 <!-- Formulario de inicio de sesión -->
-                <form id="loginForm" method="POST" class="sign-in-form">
+                <form method="POST" action="{{ route('login') }}" class="sign-in-form" novalidate>
+                    @csrf
                     <h2 class="title">Inicia Sesión</h2>
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        <input type="text" name="name" placeholder="Name" required />
+                        <input type="text" name="username" placeholder="username" id="username" required autocomplete="username"/>
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input type="password" name="password" placeholder="Password" required />
+                        <input type="password" name="password" placeholder="Password" id="password" required autocomplete="current-password"/>
+
                     </div>
                     <input type="submit" value="Login" class="btn solid" />
                     <p class="social-text">O ingrese con su Cuenta de Google</p>
                 </form>
+
                 <div class="social-media">
                     <form method="POST" action="/login-google" novalidate>
                         @csrf
@@ -46,23 +49,31 @@
                     </div>
                     <div class="input-field">
                         <i class="fas fa-envelope"></i>
-                        <input type="email" name="email" placeholder="Email" id="email" required />
+                        <input type="email" name="email" placeholder="Email" id="email" required autocomplete="username"/>
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-user-circle"></i>
+                        <input type="text" name="dni" placeholder="Documento de identidad" id="dni" required autocomplete="username"/>
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-user-circle"></i>
+                        <input type="text" name="username" placeholder="Username" id="username" required pattern="\S+" title="El username no debe contener espacios" autocomplete="username"/>
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input type="password" name="password" placeholder="Password" id="password" required />
+                        <input type="password" name="password" placeholder="Password" id="password" required autocomplete="current-password"/>
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input type="password" name="password_confirmation" placeholder="Confirmar password" id="password_confirmation" required />
+                        <input type="password" name="password_confirmation" placeholder="Confirmar password" id="password_confirmation" required autocomplete="new-password"/>
                     </div>
                     <input type="submit" class="btn" value="Sign up" />
                     <p class="social-text">O crea tu cuenta con Google</p>
                 </form>
-                
+
 
                 <!-- Mensaje de confirmación -->
-                {{-- <div id="message" style="display: none; padding: 20px; margin-top: 20px;"></div> --}}
+                <div id="message" style="display: none; padding: 20px; margin-top: 20px;"></div>
             </div>
         </div>
 

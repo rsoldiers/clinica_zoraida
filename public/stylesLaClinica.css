@@ -1,0 +1,234 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap');
+
+/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Barra superior de contacto */
+.top-bar {
+    background: linear-gradient(90deg, #1270B7 40%, #019875 100%);
+    color: white;
+    padding: 14.5px 0;
+    font-size: 0.9em;
+    text-align: center;
+}
+
+.top-bar .container {
+    display: flex;
+    justify-content: space-around;
+}
+
+/* Encabezado principal */
+.main-header {
+    background-color: white;
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    height: 95px;
+}
+
+/* Navegación principal */
+.main-nav a {
+    font-size: 1.1em;
+    transition: color 0.3s;
+    margin: 0 20px;
+    color: #28527a;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.main-nav a:hover {
+    color: #1d3d5d;
+}
+
+/* Sección de la imagen de héroe */
+.hero-img {
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+}
+
+.hero-img img {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* Sección "Hero" */
+.hero {
+    position: relative;
+    text-align: left;
+    height: 155px;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom,
+            rgba(18, 112, 183, 0.9) 0%,
+            rgba(18, 112, 183, 0) 100%),
+        url('../img/fondo_hero.png');
+    background-size: cover;
+    background-position: center;
+    opacity: 1;
+    z-index: 1;
+}
+
+.hero-text {
+    position: relative;
+    color: white;
+    font-size: 30px;
+    background-color: rgba(18, 112, 183, 0.7);
+    height: 155px;
+    padding: 50px 400px;
+    z-index: 2;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+/* Contenido principal */
+.content {
+    background-color: #e0f2f1;
+    padding: 40px;
+}
+
+/* Títulos */
+.content h2 {
+    font-size: 3em;
+    text-align: center;
+    color: #28527a;
+    margin-bottom: 20px;
+    font-weight: 700;
+    line-height: 1.2em;
+}
+
+.intro h2 {
+    font-size: 3em;
+    color: #28527a;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Sección de Introducción */
+.intro {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+    justify-content: center;
+}
+
+.intro video {
+    width: 500px;
+    height: 500px;
+    object-fit: cover;
+    margin-right: 20px;
+}
+
+.intro-text {
+    flex: 1;
+    max-width: 500px;
+    padding: 0 20px;
+}
+
+.intro-text h2 {
+    font-size: 3em;
+    color: #28527a;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.intro-text p {
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+    margin: 10px 0;
+    text-align: left;
+}
+
+/* Sección de Misión y Visión */
+.mission-vision {
+    display: flex;
+    flex-direction: column;
+    gap: 65px;
+}
+
+.mission,
+.vision {
+    display: flex;
+    align-items: center;
+    background-color: #f0f8ff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 30px 40px;
+    border-radius: 0px;
+    width: 90%;
+    margin: 10px auto;
+}
+
+.mission img,
+.vision img {
+    width: 120px;
+    height: 110px;
+    margin-right: 15px;
+}
+
+.mission h3,
+.vision h3 {
+    color: #223a66;
+    font-size: 22px;
+    font-family: 'Exo', sans-serif;
+    text-align: left;
+    margin: 0;
+}
+
+.mission p,
+.vision p {
+    margin-top: 10px;
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.text-container {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Pie de página */
+footer {
+    background-color: #1d3d5d;
+    color: white;
+    padding: 30px 0;
+    text-align: center;
+}
+
+.footer-content img {
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+.footer-content p {
+    margin: 5px 0;
+}

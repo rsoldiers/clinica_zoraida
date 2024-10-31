@@ -10,4 +10,12 @@ class PrincipalController extends Controller
     {
         return view('principal');
     }
+    public function services()
+    {
+        return view('servicios');
+    }
+    public function obstetricia()
+    {
+        return view('subservices.obstetricia');
+    }
 }

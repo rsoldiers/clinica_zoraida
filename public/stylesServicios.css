@@ -1,0 +1,391 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap');
+
+/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Barra superior de contacto */
+.top-bar {
+    background: linear-gradient(90deg, #1270B7 40%, #019875 100%);
+    color: white;
+    padding: 14.5px 0;
+    font-size: 0.9em;
+    text-align: center;
+}
+
+.top-bar .container {
+    display: flex;
+    justify-content: space-around;
+}
+
+/* Encabezado principal */
+.main-header {
+    background-color: white;
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    height: 95px;
+}
+
+/* Navegación principal */
+.main-nav a {
+    font-size: 1.1em;
+    transition: color 0.3s;
+    margin: 0 20px;
+    color: #28527a;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.main-nav a:hover {
+    color: #1d3d5d;
+}
+
+/* Sección de la imagen de héroe */
+.hero-img {
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+}
+
+.hero-img img {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* Sección "Hero" */
+.hero {
+    position: relative;
+    text-align: left;
+    height: 155px;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom,
+            rgba(18, 112, 183, 0.9) 0%,
+            rgba(18, 112, 183, 0) 100%),
+        url('../img/fondo_hero.png');
+    background-size: cover;
+    background-position: center;
+    opacity: 1;
+    z-index: 1;
+}
+
+.hero-text {
+    position: relative;
+    color: white;
+    font-size: 30px;
+    background-color: rgba(18, 112, 183, 0.7);
+    height: 155px;
+    padding: 50px 400px;
+    z-index: 2;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+/* Contenido Principal */
+/* Especialidades Médicas */
+.especialidades-container {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #f0f8ff;
+}
+
+.especialidades-cuadro {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    margin: 0 auto;
+    max-width: 1300px;
+}
+
+.especialidades-cuadro h2 {
+    font-family: "Exo", sans-serif;
+    color: #6EC1E4;
+    margin-bottom: 30px;
+    font-size: 2.5em;
+}
+
+.especialidades-items {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.especialidad-item {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+    text-align: center;
+    height: 500px;
+}
+
+.especialidad-item:hover {
+    transform: translateY(-5px);
+}
+
+.item-imagen {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+    flex-shrink: 0;
+}
+
+.especialidad-item h3 {
+    margin-top: 15px;
+    color: #333;
+    font-size: 1.5em;
+}
+
+.especialidad-item p {
+    color: #666;
+    font-size: 1em;
+    line-height: 1.5;
+}
+
+.especialidades-container a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Apoyo al Diagnóstico */
+.seccion-contenedor {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #f0f8ff;
+}
+
+.cuadro-contenido {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    margin: 0 auto;
+    max-width: 1300px;
+}
+
+.cuadro-contenido h2 {
+    font-family: "Exo", sans-serif;
+    color: #6EC1E4;
+    margin-bottom: 30px;
+    font-size: 2.5em;
+}
+
+.contenedor-items {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+}
+
+.item {
+    margin: 15px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #ffffff;
+    width: 30%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.item:hover {
+    transform: translateY(-5px);
+}
+
+.item-imagen {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.item h3 {
+    margin-top: 15px;
+    color: #333;
+    font-size: 1.5em;
+}
+
+.item p {
+    color: #666;
+    font-size: 1em;
+    line-height: 1.5;
+}
+.seccion-contenedor a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+/* Servicios Auxiliares */
+.serviciosauxiliares {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #f0f8ff;
+}
+
+.cuadro-servicios {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    margin: 0 auto;
+    max-width: 1300px;
+}
+
+.cuadro-servicios h2 {
+    font-family: "Exo", sans-serif;
+    color: #6EC1E4;
+    margin-bottom: 30px;
+    font-size: 2.5em;
+}
+
+.servicios-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.servicio-item {
+    margin: 15px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #ffffff;
+    width: 540px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.servicio-item:hover {
+    transform: translateY(-5px);
+}
+
+.servicio-imagen {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.servicio-item h3 {
+    margin-top: 15px;
+    color: #333;
+    font-size: 1.5em;
+}
+
+.servicio-item p {
+    color: #666;
+    font-size: 1em;
+    line-height: 1.5;
+}
+
+/* Somos la Clínica Madre Zoraida */
+.equipovideo {
+    position: relative;
+    text-align: center;
+    height: 850px;
+    overflow: hidden;
+}
+
+.equipovideo-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('../img/equipovideo.jpg') no-repeat center center;
+    background-size: cover;
+    z-index: 1;
+}
+
+.equipovideo-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(28, 186, 159, 0.85);
+    z-index: 2;
+}
+
+.equipovideo-text {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-family: "Exo", sans-serif;
+    font-size: 20px;
+    padding: 10px 20px;
+    z-index: 3;
+}
+
+.equipovideo-img {
+    position: relative;
+    z-index: 4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.equipovideo-img video {
+    width: 610px;
+    height: 610px;
+    border-radius: 50px;
+    display: block;
+    z-index: 5;
+}
+
+/* Pie de página */
+footer {
+    background-color: #1d3d5d;
+    color: white;
+    padding: 30px 0;
+    text-align: center;
+}
+
+.footer-content img {
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+.footer-content p {
+    margin: 5px 0;
+}

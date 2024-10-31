@@ -7,9 +7,12 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
 use Laravel\Socialite\Facades\Socialite;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\AuthController;
 use App\Models\UserGoogle;
 use Illuminate\Support\Facades\Auth;
+use GuzzleHttp\Client;
+
 
 
 /*
@@ -34,9 +37,13 @@ Route::post('/register', [RegisterController::class, 'store']);
 Route::get('/', [AuthController::class, 'index'])->name('login');
 Route::post('/', [AuthController::class, 'login']);
 
+Route::get('/logout/google', [GoogleController::class, 'logout'])->name('logout.google');
+
 
 // Ruta para la página principal
 Route::get('/principal', [PrincipalController::class, 'index'])->name('principal');
+Route::get('/servicios', [PrincipalController::class, 'services'])->name('servicios');
+Route::get('/obstetricia', [PrincipalController::class, 'obstetricia'])->name('obstetricia');
 
 
  Route::get('/login', function () {
@@ -48,7 +55,9 @@ Route::get('/principal', [PrincipalController::class, 'index'])->name('principal
  })->name('login-google');
 
  Route::get('/google-callback', function () {
-    $user = Socialite::driver('google')->user();
+    $user = Socialite::driver('google')
+    ->setHttpClient(new Client(['verify' => false]))  // Desactiva la verificación SSL
+    ->user();
 
     // Verifica si el usuario ya existe en la base de datos
     $existingUser = UserGoogle::where('google_id', $user->id)->first();
